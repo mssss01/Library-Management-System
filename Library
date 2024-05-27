@@ -1,0 +1,49 @@
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+        print(f"Book '{book}' added.")
+
+    def borrow_book(self, book):
+        if book in self.books:
+            self.books.remove(book)
+            print(f"You have borrowed '{book}'.")
+        else:
+            print(f"Sorry, '{book}' is not available.")
+
+    def view_books(self):
+        if not self.books:
+            print("No books available.")
+        else:
+            print("Available books:")
+            for book in self.books:
+                print(book)
+
+def main():
+    library = Library()
+    while True:
+        print("1. Add book")
+        print("2. Borrow book")
+        print("3. View books")
+        print("4. Quit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            book = input("Enter the book name: ")
+            library.add_book(book)
+        elif choice == '2':
+            book = input("Enter the book name: ")
+            library.borrow_book(book)
+        elif choice == '3':
+            library.view_books()
+        elif choice == '4':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
